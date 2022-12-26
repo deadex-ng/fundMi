@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import code from './code.png'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
@@ -14,109 +12,89 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.js</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
+      <main className=' bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-900'>
+        <section className='min-h-screen'>
+          <nav className='py-10 mb-12 flex justify-between'>
+            <h1 className='text-xl'>FundMi</h1>
+            <ul className='flex items-center'>
+              <button className='bg-gradient-to-r from-cyan-500 to-teal-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 text-white px-4 py-2 rounded-md ml-8'>Connect</button>
+            </ul>
+          </nav>
+          <div className='text-center p-10'>
+              <h2 className='text-5xl py-2 text-teal-600 font-medium md:text-6xl'>Lets Fund Your Project</h2>
+              <h3 className='text-2xl py-2 md:text-3xl'>Decentralized Crowdfunding</h3>
+              <p className='text-md py-5 leading-8 text-gray-800 rounded-b md:text-xl max-w-xl mx-auto dark:bg-slate-500'>
+                FundMi is a Web3 application which helps to raise funds using Matic. It is
+                a first step towards a decentralized future. No need to worry about siphoning away of funds.
+              </p>
+              <button className='bg-gradient-to-r from-cyan-500 to-teal-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 text-white px-4 py-2 rounded-md ml-8'>Get started</button>
+          </div>
+          <div className='text-center'>
+            <h3 className='text-5xl py-12 text-teal-600 font-medium md:text-6xl'>Available Projects</h3>
+            <div className='lg:flex gap-10'>
+            <div className="text-center shadow-2xl p-10 ml-10 rounded-xl my-10  dark:bg-white">
+              {/* <img src={code} className='object-center'/> */}
+              <div>
+              <Image src={code} 
+                width={100} 
+                height={100} 
               />
-            </a>
+              </div>
+              <h3 className='text-lg font-medium pt-8 pb-2'>Shiki Wrap: Heaven on Earth</h3>
+              <p className='py-2'>
+              Shiki Wrap: Heaven on Earth will bring our reversible, 
+              reusable gift bags to life while elevating the work of artists
+              José Francisco Salgado and Michelle Woo.
+              </p>
+              <div className='p-4'>
+              <button className='bg-gradient-to-r from-cyan-500 to-teal-500 
+              transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 
+              text-white px-4 py-2 rounded-md ml-8'>Read more</button>
+              </div>
+            </div>
+            <div className="text-center shadow-2xl p-10 ml-10 rounded-xl my-10  dark:bg-white">
+              {/* <img src={code} className='object-center'/> */}
+              <div>
+              <Image src={code} 
+                width={100} 
+                height={100} 
+              />
+              </div>
+              <h3 className='text-lg font-medium pt-8 pb-2'>Shiki Wrap: Heaven on Earth</h3>
+              <p className='py-2'>
+              Shiki Wrap: Heaven on Earth will bring our reversible, 
+              reusable gift bags to life while elevating the work of artists
+              José Francisco Salgado and Michelle Woo.
+              </p>
+              <div className='p-4'>
+              <button className='bg-gradient-to-r from-cyan-500 to-teal-500 
+              transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 
+              text-white px-4 py-2 rounded-md ml-8'>Read more</button>
+              </div>
+            </div>
+            <div className="text-center shadow-2xl p-10 ml-10 rounded-xl my-10  dark:bg-white">
+              {/* <img src={code} className='object-center'/> */}
+              <div>
+              <Image src={code} 
+                width={100} 
+                height={100} 
+              />
+              </div>
+              <h3 className='text-lg font-medium pt-8 pb-2'>Shiki Wrap: Heaven on Earth</h3>
+              <p className='py-2'>
+              Shiki Wrap: Heaven on Earth will bring our reversible, 
+              reusable gift bags to life while elevating the work of artists
+              José Francisco Salgado and Michelle Woo.
+              </p>
+              <div className='p-4'>
+              <button className='bg-gradient-to-r from-cyan-500 to-teal-500 
+              transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 
+              text-white px-4 py-2 rounded-md ml-8'>Read more</button>
+              </div>
+            </div>           
           </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
           </div>
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
+        </section>
       </main>
     </>
   )
