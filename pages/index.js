@@ -1,9 +1,19 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import code from './code.png'
+import {  useEffect, useState } from 'react'
 
 
 export default function Home() {
+  const [walletAddress, setWallet] = useState("");
+  const [status, setStatus] = useState("");
+  
+  const connectWalletPressed = async () => { //TODO: implement
+    const walletResponse = await connectWallet();
+    setStatus(walletResponse.status);
+    setWallet(walletResponse.address);
+  };
+
   return (
     <>
       <Head>
@@ -17,7 +27,16 @@ export default function Home() {
           <nav className='py-10 mb-12 flex justify-between'>
             <h1 className='text-xl'>FundMi</h1>
             <ul className='flex items-center'>
-              <button className='bg-gradient-to-r from-cyan-500 to-teal-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 text-white px-4 py-2 rounded-md ml-8'>Connect</button>
+              <button onClick={connectWalletPressed} className='bg-gradient-to-r from-cyan-500 to-teal-500 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 text-white px-4 py-2 rounded-md ml-8'>
+              {walletAddress.length > 0 ? (
+                "Connected: " +
+                String(walletAddress).substring(0, 6) +
+                "..." +
+                String(walletAddress).substring(38)
+                ) : (
+                <span>Connect</span>
+                )}
+                </button>
             </ul>
           </nav>
           <div className='text-center p-10'>
@@ -99,3 +118,80 @@ export default function Home() {
     </>
   )
 }
+
+const connectWallet = async () => {
+  if (window.ethereum) {
+    try {
+      const addressArray = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      console.log("Found these address: ", addressArray)
+      const obj = {
+        status: "👆🏽 Write a message in the text-field above.",
+        address: addressArray[0],
+      };
+      return obj;
+    } catch (err) {
+      return {
+        address: "",
+        status: "😥 " + err.message,
+      };
+    }
+  } else {
+    return {
+      address: "",
+      status: (
+          <p>
+            {" "}
+            🦊{" "}
+            <a target="_blank" href={`https://metamask.io/download.html`}>
+              You must install Metamask, a virtual Ethereum wallet, in your
+              browser.
+            </a>
+          </p>
+      ),
+    };
+  }
+};
+const getCurrentWalletConnected = async () => {
+  if (window.ethereum) {
+    try {
+      const addressArray = await window.ethereum.request({
+        method: "eth_accounts",
+      });
+      if (addressArray.length > 0) {
+        return {
+          address: addressArray[0],
+          status: "👆🏽 Write a message in the text-field above.",
+        };
+      } else {
+        return {
+          address: "",
+          status: "🦊 Connect to Metamask using the top right button.",
+        };
+      }
+    } catch (err) {
+      return {
+        address: "",
+        status: "😥 " + err.message,
+      };
+    }
+  } else {
+    return {
+      address: "",
+      status: (
+        <span>
+          <p>
+            {" "}
+            🦊{" "}
+            <a target="_blank" href={`https://metamask.io/download.html`}>
+              You must install Metamask, a virtual Ethereum wallet, in your
+              browser.
+            </a>
+          </p>
+        </span>
+      ),
+    };
+  }
+};
