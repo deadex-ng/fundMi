@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import code from './code.png'
 import {  useEffect, useState } from 'react'
-
+import Modal from './api/Popup'
 
 export default function Home() {
   const [walletAddress, setWallet] = useState("");
@@ -37,6 +37,14 @@ export default function Home() {
                 <span>Connect</span>
                 )}
                 </button>
+                {status == "False"? (
+                  <Modal />
+                  // <Popup trigger={status}>
+                  //   <h1>Install Metamask</h1>
+                  // </Popup>
+                ): ""}
+                {/* <Modal/> */}
+
             </ul>
           </nav>
           <div className='text-center p-10'>
@@ -128,7 +136,7 @@ const connectWallet = async () => {
 
       console.log("Found these address: ", addressArray)
       const obj = {
-        status: "👆🏽 Write a message in the text-field above.",
+        status: "True",
         address: addressArray[0],
       };
       return obj;
@@ -141,16 +149,7 @@ const connectWallet = async () => {
   } else {
     return {
       address: "",
-      status: (
-          <p>
-            {" "}
-            🦊{" "}
-            <a target="_blank" href={`https://metamask.io/download.html`}>
-              You must install Metamask, a virtual Ethereum wallet, in your
-              browser.
-            </a>
-          </p>
-      ),
+      status: "False",
     };
   }
 };
